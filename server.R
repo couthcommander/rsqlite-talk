@@ -41,7 +41,7 @@ shinyServer(function(input, output) {
   output$cnt <- renderTable({
     x <- dat()
     if(is.null(x)) return(NULL)
-    t(sapply(x[,-1,drop=FALSE], table))
+    t(sapply(x[,-1,drop=FALSE], function(i) table(factor(i, levels=0:1))))
   })
 
 })
